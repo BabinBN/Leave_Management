@@ -53,6 +53,10 @@
         }
       }
     },
+    "CountryMdl": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "utils/Loginmodel.json"
+            },
     "resources": {
       "css": [
         {
@@ -74,8 +78,8 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "name": "LeaveRequest",
+          "pattern": "",
           "target": [
             "TargetView1"
           ]
@@ -84,7 +88,7 @@
       "targets": {
         "TargetView1": {
           "id": "View1",
-          "name": "View1"
+          "name": "LeaveRequest"
         }
       }
     },

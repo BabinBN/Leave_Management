@@ -1,0 +1,38 @@
+<mvc:View controllerName="leavemanagement.controller.LeaveRequest"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page title="Leave Request">
+        <VBox class="sapUiMediumMargin">
+
+
+            <Title text="Employee Details"/>
+            <Input id="empId" placeholder="Employee ID" value="{leave>/Code}"/>
+            <Input id="empName" placeholder="Employee Name" value="{leave>/Name}" />
+
+            <Title text="Leave Information"/>
+            <ComboBox id="leaveType" selectedKey="{leave>/U_REQ}" width="100%">
+                    <core:Item key="S" text="Sick Leave"/>
+                    <core:Item key="C" text="Casual Leave"/>
+                    <core:Item key="A" text="Annual Leave"/>
+            </ComboBox>
+
+            <HBox>
+                <DatePicker id="fromDate" value="{leave>/U_FROM}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+                <DatePicker id="toDate" value="{leave>/U_TO}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+
+            </HBox>
+
+            <Input id="totalDays" placeholder="Total Days" />
+            <TextArea id="reason" placeholder="Reason" value="{leave>/U_REASON}" growing="true" rows="3" width="50%"/>
+
+
+            <HBox class="sapUiTinyMargin">
+                <Button text="Apply" type="Emphasized" press=".onApplyLeave" class="sapUiTinyMarginEnd"/>
+                <Button text="Reset" type="Reject" press=".onReset"/>
+            </HBox>
+
+        </VBox>
+    </Page>
+</mvc:View>
