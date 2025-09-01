@@ -14,7 +14,7 @@ public class leaveReqService {
 
     public String sessionId;
 
-    public String postB1Login(loginReq reqEntity) {
+    public JsonNode postB1Login(loginReq reqEntity) {
         try {
             URL url = new URL("https://htpc19835d03.cloudiax.com:50000/b1s/v2/Login");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -41,7 +41,7 @@ public class leaveReqService {
             // Extract session ID
             String sessionId = jsonResponse.get("SessionId").asText();
             this.sessionId = sessionId; // Save for future calls
-            return sessionId;
+            return jsonResponse;
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -16,6 +16,7 @@ sap.ui.define([
                     })
                 });
                 const data = await response.json();
+                return data.SessionId;
                console.log("Login Response:", data);
             } catch (err) {
                 console.error("Error in login:", err);
@@ -25,11 +26,11 @@ sap.ui.define([
 
         postrequest: async function (URL, req) {
             try {
-                // const sessionId = await this.loginrequest(AppConstant.URL.LoginRequest);
-                // if (!sessionId) {
-                //     console.error("Login failed. Cannot proceed with POST request.");
-                //     return null;
-                // }
+                 const sessionId = await this.loginrequest(AppConstant.URL.LoginRequest);
+                if (!sessionId) {
+                    console.error("Login failed. Cannot proceed with POST request.");
+                    return null;
+                }
 
                 const response = await fetch(URL, {
                     method: 'POST',

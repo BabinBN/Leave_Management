@@ -18,7 +18,7 @@ public class leaveReqController {
     private leaveReqService leaveReqService;
 
     @PostMapping("/login")
-    public String postLogin(@RequestBody loginReq loginentity) {
+    public JsonNode postLogin(@RequestBody loginReq loginentity) {
         return leaveReqService.postB1Login(loginentity);
     }
 
