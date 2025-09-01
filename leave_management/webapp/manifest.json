@@ -51,12 +51,13 @@
         "settings": {
           "bundleName": "leavemanagement.i18n.i18n"
         }
-      }
-    },
-    "CountryMdl": {
+      },
+       "leaveMdl": {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "utils/Loginmodel.json"
-            },
+                "uri": "utils/leavetypes.json"
+            }
+    },
+   
     "resources": {
       "css": [
         {

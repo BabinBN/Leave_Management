@@ -1,0 +1,9 @@
+[
+    {
+  "leaveTypes": [
+    { "key": "S", "text": "Sick Leave" },
+    { "key": "C", "text": "Casual Leave" },
+    { "key": "A", "text": "Annual Leave" }
+  ]
+}
+]

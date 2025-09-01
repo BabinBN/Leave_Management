@@ -30,6 +30,9 @@ public class leaveReqentity {
     @JsonProperty("U_REASON")
     private String uReason;
 
+    @JsonProperty("U_DAYS")
+    private String uDays;
+
     //Ignore Lombok getters for JSON serialization to avoid duplicate lowercase keys
     @JsonIgnore
     public String getCode() { return code; }
@@ -43,13 +46,16 @@ public class leaveReqentity {
     public String getUTo() { return uTo; }
     @JsonIgnore
     public String getUReason() { return uReason; }
+    @JsonIgnore
+    public String getuDays() { return uDays; }
 
-    public leaveReqentity(String code, String name, String uReq, String uFrom, String uTo, String uReason) {
+    public leaveReqentity(String code, String name, String uReq, String uFrom, String uTo, String uReason,String uDays) {
         this.code = code;
         this.name = name;
         this.uReq = uReq;
         this.uFrom = uFrom;
         this.uTo = uTo;
         this.uReason = uReason;
+        this.uDays = uDays;
     }
 }

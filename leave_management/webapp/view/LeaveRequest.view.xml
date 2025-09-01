@@ -7,25 +7,28 @@
         <VBox class="sapUiMediumMargin">
 
 
-            <Title text="Employee Details"/>
-            <Input id="empId" placeholder="Employee ID" value="{leave>/Code}"/>
-            <Input id="empName" placeholder="Employee Name" value="{leave>/Name}" />
+            <Label text="Employee Details" required="true"/>
+            <Input id="empId" placeholder="Employee ID" value="{leave>/Code}"  editable="{visible>/edit}"  />
+            <Input id="empName" placeholder="Employee Name" value="{leave>/Name}" visible="{= ${leave>/Code} ? true : false }" editable="{visible>/edit}"   />
 
-            <Title text="Leave Information"/>
-            <ComboBox id="leaveType" selectedKey="{leave>/U_REQ}" width="100%">
+            <Label text="Leave Information" required="true"/>
+            <!-- <ComboBox id="leaveType" selectedKey="{leave>/U_REQ}" width="100%">
                     <core:Item key="S" text="Sick Leave"/>
                     <core:Item key="C" text="Casual Leave"/>
                     <core:Item key="A" text="Annual Leave"/>
+            </ComboBox> -->
+            <ComboBox id="leaveType" selectedKey="{leave>/U_REQ}" items="{leaveMdl>/0/leaveTypes}" width="100%" editable="{visible>/edit}" >
+                    <core:Item key="{leaveMdl>key}" text="{leaveMdl>text}"/>
             </ComboBox>
 
-            <HBox>
-                <DatePicker id="fromDate" value="{leave>/U_FROM}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
-                <DatePicker id="toDate" value="{leave>/U_TO}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+            <HBox visible="{=${leave>/U_REQ}? true:false}"   >
+                <DatePicker id="fromDate" value="{leave>/U_FROM}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" editable="{visible>/edit}"/>
+                <DatePicker id="toDate" value="{leave>/U_TO}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" editable="{visible>/edit}" />
 
             </HBox>
 
-            <Input id="totalDays" placeholder="Total Days" />
-            <TextArea id="reason" placeholder="Reason" value="{leave>/U_REASON}" growing="true" rows="3" width="50%"/>
+           <Input id="totalDays" placeholder="Total Days" value="{leave>/U_DAYS}" visible="{=${leave>/U_FROM} &amp;&amp; ${leave>/U_TO} &amp;&amp; ${leave>/Code} ? true:false}" editable="{visible>/edit}"/>
+            <TextArea id="reason" placeholder="Reason" value="{leave>/U_REASON}" growing="true" rows="3" width="50%" visible="{=${leave>/U_FROM} &amp;&amp; ${leave>/U_TO} &amp;&amp; ${leave>/Code} ? true:false}" editable="{visible>/edit}"/>
 
 
             <HBox class="sapUiTinyMargin">
