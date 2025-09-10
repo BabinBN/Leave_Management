@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
