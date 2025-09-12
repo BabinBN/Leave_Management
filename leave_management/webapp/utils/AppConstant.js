@@ -7,7 +7,9 @@ sap.ui.define([],function()
             LoginRequest:"http://localhost:8080/leaveReq/login",
             Leaverequestadd:"http://localhost:8080/leaveReq/add",
            // Leaverequestadd:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF",
-            Leaverequestget:""
+            Leaverequestget:"",
+            PostQuery:"http://localhost:8080/query/post",
+            executeQuery:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/SQLQueries('id')/List"
         }
             
         

@@ -80,16 +80,35 @@
       "routes": [
         {
           "name": "LeaveRequest",
-          "pattern": "",
+          "pattern": "l",
           "target": [
-            "TargetView1"
+            "LeaveRequest"
           ]
+
+        },
+        {
+          "name":"Dashboard",
+          "pattern":"",
+          "target":["Dashboard"]
+        },
+        {
+          "name":"Query",
+          "pattern":"Q",
+          "target":["query"]
         }
       ],
       "targets": {
-        "TargetView1": {
+        "LeaveRequest": {
           "id": "View1",
           "name": "LeaveRequest"
+        },
+        "Dashboard":{
+          "id":"view2",
+          "name":"Dashboard"
+        },
+        "query":{
+          "id":"view3",
+          "name":"Query"
         }
       }
     },
