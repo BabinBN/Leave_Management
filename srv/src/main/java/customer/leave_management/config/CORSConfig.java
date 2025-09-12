@@ -23,12 +23,13 @@ public class CORSConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.securityMatcher("/leaveReq/**") 
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll());
-
+    public SecurityFilterChain allOpenFilterChain(HttpSecurity http) throws Exception {
+        http
+            .securityMatcher("/**") // ✅ covers all endpoints
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .anyRequest().permitAll()
+            );
         return http.build();
     }
 
