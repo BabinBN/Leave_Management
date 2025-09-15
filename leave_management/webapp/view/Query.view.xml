@@ -1,5 +1,4 @@
-<mvc:View
-    controllerName="leavemanagement.controller.Query"
+<mvc:View controllerName="leavemanagement.controller.Query"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
@@ -12,19 +11,15 @@
             <Input placeholder="Query Name" value="{query>/SqlName}" width="20%" />
 
             <!-- Query TextArea -->
-            <TextArea placeholder="Enter Query...."  value="{query>/SqlText}" growing="true" rows="3" width="100%" />
+            <TextArea placeholder="Enter Query...." value="{query>/SqlText}" growing="true" rows="3" width="100%" />
 
             <!-- Arrow button -->
-            <Button
-                id="toggleArrow"
-                icon="sap-icon://slim-arrow-down"
-                type="Transparent"
-                press=".onToggleTable"
-                tooltip="Show/Hide Result" />
+            <Button id="toggleArrow" icon="sap-icon://slim-arrow-down" type="Transparent" press=".onToggleTable" tooltip="Show/Hide Result" />
 
-            <Table id="resultTable" visible="false">
-                
+            <Table id="resultTable" inset="false" visible="false">
             </Table>
+
+
 
             <HBox class="sapUiTinyMargin">
                 <Button text="Execute" type="Emphasized" press=".onExecute" class="sapUiTinyMarginEnd"/>

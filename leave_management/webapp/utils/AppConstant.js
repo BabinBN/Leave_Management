@@ -9,7 +9,7 @@ sap.ui.define([],function()
            // Leaverequestadd:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF",
             Leaverequestget:"",
             PostQuery:"http://localhost:8080/query/post",
-            executeQuery:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/SQLQueries('id')/List"
+            executeQuery:"http://localhost:8080/query/Postquery/id"
         }
             
         
