@@ -2,7 +2,8 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "leavemanagement/utils/BaseApi",
-    "leavemanagement/utils/AppConstant"
+    "leavemanagement/utils/AppConstant",
+    "sap/ui/export/Spreadsheet"
 ], (Controller, JSONModel, BaseApi, AppConstant) => {
     "use strict";
 
@@ -29,9 +30,15 @@ sap.ui.define([
             var excutedata = this.getView().getModel("query").getData();
             var data = await BaseApi.postrequest(AppConstant.URL.PostQuery, excutedata);
             console.log("PostQuery Response:", data);
-            const Id=data.SqlCode
+            const Id = data.SqlCode
             //const Id = "Q1-10"
             let URL = AppConstant.URL.executeQuery.replace("id", Id)
+            var resdata = await BaseApi.postrequest(URL, "");
+            this.onResponseLoad(resdata)
+        },
+        onFind: async function () {
+            var queryId = this.getView().byId("qid").getValue();
+            let URL = AppConstant.URL.executeQuery.replace("id", queryId)
             var resdata = await BaseApi.postrequest(URL, "");
             this.onResponseLoad(resdata)
         },
@@ -70,7 +77,45 @@ sap.ui.define([
 
             // show table
             oTable.setVisible(true);
+        },
+        onExport: function () {
+            var oTable = this.getView().byId("resultTable");   // your sap.m.Table
+            var oModel = oTable.getModel();                    // bound JSONModel
+            var aData = oModel.getProperty("/value");          // assuming response is in "/value"
+
+            if (!aData || aData.length === 0) {
+                sap.m.MessageToast.show("No data available to export");
+                return;
+            }
+
+            // 🔹 Generate column definitions dynamically based on keys in first object
+            var aCols = Object.keys(aData[0]).map(function (sKey) {
+                return {
+                    label: sKey,       // Column name in Excel
+                    property: sKey     // Field name in JSON
+                };
+            });
+
+            // 🔹 Spreadsheet settings
+            var oSettings = {
+                workbook: { columns: aCols },
+                dataSource: aData,
+                fileName: "Export.xlsx"
+            };
+
+            var oSheet = new sap.ui.export.Spreadsheet(oSettings);
+            oSheet.build().then(function () {
+                sap.m.MessageToast.show("Excel exported successfully!");
+            }).finally(function () {
+                oSheet.destroy();
+            });
+        },
+        onNavBack:function()
+        {
+            var oRoute= this.getOwnerComponent().getRouter();
+            oRoute.navTo("Dashboard")
         }
+
 
 
 

@@ -8,10 +8,11 @@
 		<Page id="myPage" title="Side Navigation Example" enableScrolling="true">
 			<customHeader>
 				<OverflowToolbar>
-					<Button icon="sap-icon://menu2" press=".onToggleSideNav" />
+				
+					<!-- <Button icon="sap-icon://menu2" press=".onToggleSideNav" /> -->
 					<Image src="./resources/sap/ui/documentation/sdk/images/logo_sap.png" height="30px" />
-					<Link text="Leave Request" level="H5" press=".onGoLeave"/>
-                    <Link text="Query Generator" level="H5" press=".onGoQuery" />
+					<Button id="btnLeave" text="Leave Request" level="H5" press=".onGoLeave" />
+                    <Button id="btnQuery" text="Query Generator" level="H5" press=".onGoQuery" />
 					<ToolbarSpacer />
 					<Button icon="sap-icon://search"/>
 					<Button icon="sap-icon://bell"/>
