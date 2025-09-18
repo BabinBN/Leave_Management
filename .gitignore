@@ -32,3 +32,5 @@ hs_err*
 
 # auto generated wildcard
 db/.env
+# auto generated wildcard
+.env
