@@ -1,7 +1,6 @@
 package customer.leave_management.Login;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/Login")
 public class logincontroller {
     @Autowired
-    public JWT jwt;
+    // public JWT jwt;
+    public loginservice loginservice;
     
  
-    @PostMapping("path")
-    public ResponseEntity<?> login(@RequestBody loginentity loginentity )
+    @PostMapping("/signup")
+    public loginentity login(@RequestBody loginentity loginentity )
     {
-              return null;
+              return loginservice.Addlogin(loginentity);
     }
     
 }
