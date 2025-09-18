@@ -29,6 +29,8 @@ modules:
   path: db
   requires:
   - name: Leave_Management-db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
   parameters:
     buildpack: nodejs_buildpack
   build-parameters:
@@ -65,6 +67,8 @@ resources:
   parameters:
     service: hana
     service-plan: hdi-shared
+  properties:
+    hdi-container-name: ${service-name}
 - name: Leave_Management-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
@@ -89,6 +93,12 @@ resources:
     service: destination
     service-name: Leave_Management-destination-service
     service-plan: lite
+- name: cross-container-service-1
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: ""
+  properties:
+    the-service-name: ${service-name}
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

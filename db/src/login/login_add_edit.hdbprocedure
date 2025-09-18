@@ -1,0 +1,75 @@
+PROCEDURE "Add_edit_Login"(IN IN_PARAM NCLOB, OUT Ex_MESSAGE NVARCHAR(200)) AS 
+BEGIN
+  DECLARE it_userid BIGINT;
+  DECLARE it_username NVARCHAR(50);
+  DECLARE it_email NVARCHAR(20);
+  DECLARE it_password NVARCHAR(50);
+  DECLARE it_created_at TIMESTAMP;
+  DECLARE it_updated_at TIMESTAMP;
+  DECLARE user_exists INT;
+  DECLARE insert_error CONDITION FOR SQL_ERROR_CODE 10001;
+  DECLARE EXIT HANDLER FOR insert_error 
+  BEGIN EX_MESSAGE := 'Error: ' ||::SQL_ERROR_MESSAGE;
+END;
+SELECT "userid",
+  "username",
+  "email",
+  "password",
+  "created_at",
+  "updated_at" INTO it_userid,
+  it_username,
+  it_email,
+  it_password,
+  it_created_at,
+  it_updated_at
+FROM JSON_TABLE(
+    TO_CLOB(:IN_PARAM),
+    '$' COLUMNS(
+      "userid" BIGINT PATH '$.userid',
+      "username" NVARCHAR(50) PATH '$.username',
+      "email" NVARCHAR(50) PATH '$.email',
+      "password" NVARCHAR(50) PATH '$.password',
+      "created_at" TIMESTAMP PATH '$.created_at',
+      "updated_at" TIMESTAMP PATH '$.updated_at'
+    )
+  ) AS BT;
+IF it_userid > 0 THEN
+UPDATE "userdts"
+SET "username" = it_username,
+  "email" = it_email,
+  "password" = it_password,
+  "updated_at" = it_updated_at
+WHERE "userid" = it_userid;
+ELSE
+SELECT COUNT(*) INTO user_exists
+FROM "userdts"
+WHERE "email" = it_email;
+IF user_exists > 0 THEN EX_MESSAGE := 'User email Already exists';
+ELSE
+INSERT INTO "userdts" (
+    "username",
+    "email",
+    "password",
+    "created_at",
+    "updated_at"
+  )
+VALUES(
+    it_username,
+    it_email,
+    it_password,
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP
+  );
+it_userid := CURRENT_IDENTITY_VALUE();
+END IF;
+END IF;
+SELECT "userid",
+  "username",
+  "email",
+  "password",
+  "created_at",
+  "updated_at"
+FROM "userdts"
+WHERE "userid" = :it_userid;
+Ex_MESSAGE := 'SUCCESS';
+END;
