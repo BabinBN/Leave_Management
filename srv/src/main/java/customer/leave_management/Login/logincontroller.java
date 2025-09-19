@@ -28,7 +28,7 @@ public class logincontroller {
     @PostMapping("/signin")
     public loginentity signin(@RequestBody loginmodel loginmodel) 
     {
-        return loginservice.getbyemailpass(loginmodel.getEmail(),loginmodel.getPassword());
+        return loginservice.getbyemailpass(loginmodel.email,loginmodel.password);
     }
     
     

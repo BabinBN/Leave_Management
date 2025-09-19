@@ -7,7 +7,7 @@ import jakarta.persistence.ConstructorResult;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.SqlResultSetMapping;
-
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 // import lombok.AllArgsConstructor;
@@ -36,6 +36,8 @@ import lombok.NoArgsConstructor;
 
 ))
 public class loginentity {
+    @Transient
+     public String token;
     @Id
     public Long userid;
     public String username;
@@ -44,8 +46,9 @@ public class loginentity {
     public String created_at;
     public String updated_at;
 
-    public loginentity(Long userid, String UserName, String email, String password, String Created_at,
+    public loginentity(String token,Long userid, String UserName, String email, String password, String Created_at,
             String Updated_at) {
+                 this.token = token;
         this.userid = userid;
         this.username = UserName;
         this.password = password;
