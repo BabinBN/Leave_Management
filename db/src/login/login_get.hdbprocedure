@@ -1,0 +1,31 @@
+PROCEDURE "GET_USERPWD"(IN it_email NVARCHAR(20), IN it_password NVARCHAR(20), OUT EX_MESSAGE NVARCHAR(50)) AS 
+BEGIN 
+  -- DECLARE it_email NVARCHAR(50);
+  -- DECLARE it_password NVARCHAR(50);
+  -- SELECT "email",
+  --   "password" INTO it_email,
+  --   it_password
+  -- FROM JSON_TABLE (
+  --     TO_CLOB (:IN_PARAM) $COLUMN(
+  --       "email" NVARCHAR(20) path '$.email',
+  --       "password" NVARCHAR(20) path '$.password'
+  --     )
+  --   )
+  IF EXISTS(
+    SELECT *
+    FROM "userdts"
+    WHERE "email" = :it_email AND
+      "password" = :it_password
+  ) THEN EX_MESSAGE = 'Login_Success';
+  SELECT "userid",
+    "username",
+    "password",
+    "email",
+    "created_at",
+    "updated_at"
+  FROM "userdts"
+  WHERE "email" = :it_email AND
+    "password" = :it_password;
+    ELSE EX_MESSAGE = 'Invalid Credentials';
+END IF;
+End;
