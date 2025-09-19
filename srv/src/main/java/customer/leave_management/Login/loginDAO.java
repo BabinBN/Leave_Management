@@ -21,7 +21,7 @@ public class loginDAO {
         try {
           //  String reqpayload = new Gson().toJson(loginentity);
              String reqPayload = new Gson().toJson(new loginentity[] { loginentity });
-            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("Add_Edit_Login");
+            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("ADD_EDIT_USER");
             //  StoredProcedureQuery query = entityManager.createStoredProcedureQuery(
             //         "\"BEE572FBAFE34972B0047FFB3C5AB915\".\"Add_Edit_Login\"",
             //         loginentity.class // or the result mapping name
