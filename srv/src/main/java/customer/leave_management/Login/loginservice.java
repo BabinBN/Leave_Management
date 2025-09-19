@@ -14,8 +14,8 @@ public class loginservice {
         return loginDAO.createLogin(loginentity);
     }
 
-    public loginentity getbyemailpass()
+    public loginentity getbyemailpass(String email,String password)
     {
-        return null;
+        return loginDAO.getuserPWD(email,password);
     }
 }

@@ -21,7 +21,7 @@ public class loginDAO {
         try {
           //  String reqpayload = new Gson().toJson(loginentity);
              String reqPayload = new Gson().toJson(new loginentity[] { loginentity });
-            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("ADD_EDIT_USER");
+            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("ADD_EDIT_USER",loginentity.class);
             //  StoredProcedureQuery query = entityManager.createStoredProcedureQuery(
             //         "\"BEE572FBAFE34972B0047FFB3C5AB915\".\"Add_Edit_Login\"",
             //         loginentity.class // or the result mapping name
@@ -37,5 +37,26 @@ public class loginDAO {
             return null;
         }
     }
+
+public loginentity getuserPWD(String email,String password)
+{
+    try{
+           //String reqPayload=new Gson().toJson(loginmodel);
+           StoredProcedureQuery query=entityManager.createStoredProcedureQuery("Get_USERPWD",loginentity.class);
+           query.registerStoredProcedureParameter("IN_email", String.class, ParameterMode.IN);
+           query.registerStoredProcedureParameter("IN_pwd", String.class, ParameterMode.IN);
+           query.registerStoredProcedureParameter("EX_MESSAGE", String.class, ParameterMode.OUT);
+           query.setParameter("IN_email",email);
+           query.setParameter("IN_pwd",password);
+           query.execute();
+
+           return (loginentity) query.getSingleResult();
+           
+    }
+    catch(Exception ex)
+    {
+        return null;
+    }
+}
 
 }
