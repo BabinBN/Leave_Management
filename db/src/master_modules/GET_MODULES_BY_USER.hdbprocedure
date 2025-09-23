@@ -1,0 +1,31 @@
+PROCEDURE "GET_MODULES_BY_USER" (IN "BODY" NCLOB) AS 
+BEGIN 
+    DECLARE EMAIL NVARCHAR(100);
+    DECLARE ROLE NVARCHAR(256);
+    SELECT json_value(:BODY, '$.email') INTO "EMAIL" FROM DUMMY;
+    SELECT json_value(:BODY, '$.role') INTO "ROLE" FROM DUMMY;
+
+
+    IF :ROLE = '1' THEN
+        SELECT MOD."order",MOD."id" "id",MOD."name",MOD."key",MOD."description", MOD."icon", MOD."parent_id", MOD."sub_title", MOD."footer", MODP."id" "module_page_id",
+        MODP."name" "module_page_name",MODP."pattern",MODP."target", MODP."view_name", MODP."parent" ,MODP."control_id" ,MODP."control_aggregations" , MODP."role"
+        FROM "master_modules" MOD LEFT JOIN "module_pages" MODP ON MODP."module_id" = MOD."id" where MOD."status" = 2 order by Mod."order" asc;
+   
+    END IF;
+    IF :ROLE = '2' THEN
+        SELECT MOD."order",MOD."id" "id",MOD."name",MOD."key",MOD."description", MOD."icon", MOD."parent_id", MOD."sub_title", MOD."footer", MODP."id" "module_page_id",
+        MODP."name" "module_page_name",MODP."pattern",MODP."target", MODP."view_name", MODP."parent" ,MODP."control_id" ,MODP."control_aggregations" 
+        FROM "master_modules" AS MOD
+        LEFT JOIN "module_pages" AS MODP
+        ON MOD."id" = MODP."module_id"
+        WHERE MOD."id" = 44 OR MOD."parent_id" = 44  order by MOD."id"; 
+    END IF;
+    IF :ROLE = '3' THEN
+        select * from (select "order","id" "id","name","key","description","icon","parent_id","sub_title","footer","module_page_id",
+        "module_page_name","pattern","target", "view_name","parent" ,"control_id" ,"control_aggregations", "userName","role" from "GET_MODULE_BY_USER"
+         UNION
+             select "order","id" "id","name","key","description","icon","parent_id","sub_title","footer", 0 "module_page_id",
+            '' "module_page_name",'','', '', '' ,'' ,'','','' from "master_modules"  where "id" in (select DISTINCT "parent_id" from GET_MODULE_BY_USER)) A 
+            where A."userName" = :EMAIL or A."userName" = '' order by A."module_page_id";
+    END IF;
+END

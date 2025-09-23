@@ -1,0 +1,65 @@
+VIEW "GET_MODULE_BY_USER" (
+  "order",
+  "id",
+  "name",
+  "key",
+  "description",
+  "icon",
+  "parent_id",
+  "sub_title",
+  "footer",
+  "module_page_id",
+  "module_page_name",
+  "pattern",
+  "target",
+  "view_name",
+  "parent",
+  "control_id",
+  "control_aggregations",
+  "role"
+) AS (
+  -- main join with module_pages
+  SELECT t3."order",
+    t3."id",
+    t3."name",
+    t3."key",
+    t3."description",
+    t3."icon",
+    t3."parent_id",
+    t3."sub_title",
+    t3."footer",
+    t4."id" AS "module_page_id",
+    t4."name" AS "module_page_name",
+    t4."pattern",
+    t4."target",
+    t4."view_name",
+    t4."parent",
+    t4."control_id",
+    t4."control_aggregations",
+    t4."role"
+  FROM "master_modules" t3
+    INNER JOIN "module_pages" t4
+ ON t4."module_id" = t3."id"
+  UNION ALL
+  -- fallback: include module with id = 1 even if no pages exist
+  SELECT t3."order",
+    t3."id",
+    t3."name",
+    t3."key",
+    t3."description",
+    t3."icon",
+    t3."parent_id",
+    t3."sub_title",
+    t3."footer",
+    0 AS "module_page_id",
+    '' AS "module_page_name",
+    '' AS "pattern",
+    '' AS "target",
+    '' AS "view_name",
+    '' AS "parent",
+    '' AS "control_id",
+    '' AS "control_aggregations",
+    NULL AS "role"
+  FROM "master_modules" t3
+  WHERE t3."id" = 1
+);

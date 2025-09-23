@@ -1,0 +1,4 @@
+CONSTRAINT module_pages_constraint 
+ON "module_pages" FOREIGN KEY ("module_id") 
+REFERENCES "master_modules"("id") ON UPDATE  CASCADE
+
