@@ -1,1 +1,2 @@
 id;module_id;name;pattern;target;view_name;parent;control_id;control_aggregations;role
+1;3;manage-property-object-hierarchy;manage-property-object-hierarchy;['ManagePropertyObjectHierarchy'];property_management.property_object_hierarchy.ManagePropertyObjectHierarchy;AppUnified;pageContainer;pages;null
