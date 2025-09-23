@@ -4,6 +4,8 @@ sap.ui.define([],function()
     return {
         URL:{
            // LoginRequest:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/Login",
+           SignIn:"http://localhost:8080/Login/signin",
+           SignUp:"http://localhost:8080/Login/signup",
             LoginRequest:"http://localhost:8080/leaveReq/login",
             Leaverequestadd:"http://localhost:8080/leaveReq/add",
            // Leaverequestadd:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF",

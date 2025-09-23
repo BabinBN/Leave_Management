@@ -10,7 +10,7 @@
 				<OverflowToolbar>
 				
 					<!-- <Button icon="sap-icon://menu2" press=".onToggleSideNav" /> -->
-					<Image src="./resources/sap/ui/documentation/sdk/images/logo_sap.png" height="30px" />
+					<!-- <Image src="./resources/sap/ui/documentation/sdk/images/logo_sap.png" height="30px" /> -->
 					<Button id="btnLeave" text="Leave Request" level="H5" press=".onGoLeave" />
                     <Button id="btnQuery" text="Query Generator" level="H5" press=".onGoQuery" />
 					<ToolbarSpacer />

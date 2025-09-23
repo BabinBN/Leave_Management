@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Dialog  stretchOnPhone="true" contentWidth="400px">
+        <customHeader>
+            <Toolbar>
+                <Title text="Sign Up" width="100%" textAlign="Center"/>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://decline" type="Reject" press=".onCloseSignUp"/>
+            </Toolbar>
+        </customHeader>
+        <content>
+
+            <FlexBox direction="Column" justifyContent="Center" alignItems="Center" height="auto" class="sapUiContentPadding" style="
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+    min-height: 200px;
+  ">
+
+                <Panel class="shadow-lg sapUiTinyMarginTop">
+
+                    <VBox class="sapUiMediumMargin" width="260px" renderType="Bare">
+                        <HBox justifyContent="Center" alignItems="Center" class="sapUiMediumMarginBottom">
+                            <!-- <Image src="images/logo.png" width="30px" height="30px" /> -->
+                            <Title text="Create your account" level="H1" class="sapUiSmallMarginBegin" />
+                        </HBox>
+
+                        <!-- Full Name -->
+                        <Label text="username" />
+                        <Input  placeholder="username" required="true" value="{signUpModel>/username}" />
+
+                        <!-- Email -->
+                        <Label text="email"  class="sapUiSmallMarginTop" />
+                        <Input  type="Email" placeholder="email" required="true" value="{signUpModel>/email}" />
+
+                        <!-- Password -->
+                        <Label text="password"  class="sapUiSmallMarginTop"  />
+                        <Input  type="Password" placeholder="Password" required="true" value="{signUpModel>/password}" />
+
+                        <!-- Confirm Password -->
+                        <!-- <Label text="{i18n>l_CPassword}" labelFor="confirmPasswordInput" class="sapUiSmallMarginTop" visible="{signUpModel>/signup/showConfirmPassword}" />
+                <Input id="confirmPasswordInput" type="Password" placeholder="{i18n>l_CEPassword}" required="true" value="{signUpModel>/signup/confirm_pwd}" valueState="{= ${signUpModel>/signup/confirmPasswordError} ? 'Error' : 'None'}" valueStateText="{signUpModel>/signup/confirmPasswordErrorText}" liveChange=".onConfirmPasswordLiveChange" visible="{signUpModel>/signup/showConfirmPassword}" /> -->
+                        <!-- Role -->
+                        <!-- <Label text="Role" labelFor="roleInput" class="sapUiSmallMarginTop"/>
+                <Select id="roleInput" selectedKey="{signUpModel>/signup/role_user}" required="true">
+                    <items>
+                        <core:Item key="User" text="User" />
+                        <core:Item key="Admin" text="Admin" />
+                    </items>
+                </Select> -->
+
+                        <!-- Sign Up Button -->
+                        <Button text="Sign Up" type="Emphasized" class="sapUiMediumMarginTop" press=".onSignUpLog" width="100%" />
+
+                        <HBox justifyContent="Center" class="sapUiSmallMarginTop">
+                            <Text text="Already have an account?" />
+                            <Link text="Sign In" class="sapUiTinyMarginBegin" press=".onSignIn" />
+                        </HBox>
+                    </VBox>
+                </Panel>
+            </FlexBox>
+        </content>
+
+        <!-- <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button type="Emphasized" text="Save" press=".onPressAddLink" />
+                    <Button text="Close" type="Ghost" press=".onCloseDialog" ariaHasPopup="Dialog" />
+                </content>
+            </Toolbar>
+        </footer> -->
+    </Dialog>
+</core:FragmentDefinition>
