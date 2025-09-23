@@ -1,0 +1,8 @@
+PROCEDURE "GET_MODULES_BY_USER" (IN "BODY" NCLOB) AS 
+BEGIN 
+    
+        SELECT MOD."order",MOD."id" "id",MOD."name",MOD."key",MOD."description", MOD."icon", MOD."parent_id", MOD."sub_title", MOD."footer", MODP."id" "module_page_id",
+        MODP."name" "module_page_name",MODP."pattern",MODP."target", MODP."view_name", MODP."parent" ,MODP."control_id" ,MODP."control_aggregations" , MODP."role"
+        FROM "master_modules" MOD LEFT JOIN "module_pages" MODP ON MODP."module_id" = MOD."id" where MOD."status" = 2 order by Mod."order" asc;
+
+END
