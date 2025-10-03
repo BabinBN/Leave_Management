@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog title="Business Partner" id="dailog" contentWidth="70%" contentHeight="60%">
+        <content>
+            <Table id="bpTable" mode="SingleSelectMaster" items="{Bpmdl>/BusinessMdl}">
+
+                <noData>
+                    <Text text="No Business Partners found."/>
+                </noData>
+
+                <columns>
+                    <Column>
+                        <Text text="BP Code" />
+                    </Column>
+                    <Column>
+                        <Text text="BP Name" />
+                    </Column>
+                    <Column>
+                        <Text text="BP Type" />
+                    </Column>
+                    <Column>
+                        <Text text="Group" />
+                    </Column>
+                </columns>
+
+                <!-- Table Items -->
+                <items>
+                    <ColumnListItem vAlign="Middle" press=".onBPListItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{Bpmdl>BPCode}"/>
+                            <Text text="{Bpmdl>BPName}" />
+                            <Text text="{Bpmdl>AccountBalance}" />
+                            <Text text="{Bpmdl>BPCurrency}" />
+                            <Text text="{Bpmdl>Active}" />
+                            <Text text="{Bpmdl>BPType}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="Choose" type="Emphasized" press=".onBPChoose" />
+                    <Button text="New" type="Emphasized" press=".onBPDialogOk" />
+                    <Button text="Close" type="Ghost" press=".onBPDialogClose" />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

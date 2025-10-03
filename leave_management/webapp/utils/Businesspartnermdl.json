@@ -1,0 +1,164 @@
+{
+  "BusinessMdl":[
+    {
+      "BPCode": "C1001",
+      "BPName": "Alpha Traders",
+      "AccountBalance": "12000.50",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "C1002",
+      "BPName": "Beta Distributors",
+      "AccountBalance": "8500.00",
+      "BPCurrency": "EUR",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2001",
+      "BPName": "Gamma Supplies",
+      "AccountBalance": "-3500.75",
+      "BPCurrency": "USD",
+      "Active": "No",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "S2002",
+      "BPName": "Delta Exports",
+      "AccountBalance": "22500.00",
+      "BPCurrency": "INR",
+      "Active": "Yes",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1003",
+      "BPName": "Epsilon Retailers",
+      "AccountBalance": "0.00",
+      "BPCurrency": "GBP",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "C1004",
+      "BPName": "Zeta Wholesale",
+      "AccountBalance": "5300.90",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2003",
+      "BPName": "Omega Traders",
+      "AccountBalance": "10000.00",
+      "BPCurrency": "AED",
+      "Active": "No",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1005",
+      "BPName": "Prime Imports",
+      "AccountBalance": "7650.00",
+      "BPCurrency": "EUR",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "C1006",
+      "BPName": "Urban Stores",
+      "AccountBalance": "15600.45",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2004",
+      "BPName": "Global Exports",
+      "AccountBalance": "-250.00",
+      "BPCurrency": "INR",
+      "Active": "No",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1007",
+      "BPName": "Skyline Enterprises",
+      "AccountBalance": "9450.75",
+      "BPCurrency": "GBP",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2005",
+      "BPName": "Horizon Supplies",
+      "AccountBalance": "12000.00",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1008",
+      "BPName": "Matrix Solutions",
+      "AccountBalance": "18250.00",
+      "BPCurrency": "EUR",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "C1009",
+      "BPName": "Vision Retailers",
+      "AccountBalance": "6000.00",
+      "BPCurrency": "INR",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2006",
+      "BPName": "NextGen Traders",
+      "AccountBalance": "750.00",
+      "BPCurrency": "GBP",
+      "Active": "No",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1010",
+      "BPName": "Brightline Stores",
+      "AccountBalance": "13200.00",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2007",
+      "BPName": "Everest Supplies",
+      "AccountBalance": "3000.00",
+      "BPCurrency": "EUR",
+      "Active": "Yes",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1011",
+      "BPName": "NorthStar Enterprises",
+      "AccountBalance": "-450.00",
+      "BPCurrency": "USD",
+      "Active": "Yes",
+      "BPType": "Customer"
+    },
+    {
+      "BPCode": "S2008",
+      "BPName": "Pioneer Exports",
+      "AccountBalance": "20500.00",
+      "BPCurrency": "INR",
+      "Active": "Yes",
+      "BPType": "Supplier"
+    },
+    {
+      "BPCode": "C1012",
+      "BPName": "Summit Retailers",
+      "AccountBalance": "8900.00",
+      "BPCurrency": "GBP",
+      "Active": "Yes",
+      "BPType": "Customer"
+    }
+  ]
+}

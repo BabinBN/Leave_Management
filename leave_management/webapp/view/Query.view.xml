@@ -8,10 +8,10 @@
 
             <!-- Query ID & Name -->
             <Input id="qid" placeholder="Query Id" value="{query>/SqlCode}" width="20%" />
-            <Input placeholder="Query Name" value="{query>/SqlName}" width="20%" />
+            <Input id="qName" placeholder="Query Name" value="{query>/SqlName}" width="20%" visible="true" />
 
             <!-- Query TextArea -->
-            <TextArea placeholder="Enter Query...." value="{query>/SqlText}" growing="true" rows="3" width="100%" />
+            <TextArea id="txtquery" placeholder="Enter Query...." value="{query>/SqlText}" growing="true" rows="3" width="100%" visible="true" />
 
             <!-- Arrow button -->
             <Button id="toggleArrow" icon="sap-icon://slim-arrow-down" type="Transparent" press=".onToggleTable" tooltip="Show/Hide Result" />

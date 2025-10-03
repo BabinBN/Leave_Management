@@ -1,0 +1,48 @@
+{
+    "TaxCode": [
+        {
+            "code": "N2",
+            "Name": "100% IE non-ded. input tax"
+        },
+        {
+            "code": "N1",
+            "Name": "100% UK non-ded.input taxt"
+        },
+        {
+            "code": "X1",
+            "Name": "Exempt Input"
+        },
+         {
+            "code": "V2",
+            "Name": "IE Std rate 13.5%"
+        },
+         {
+            "code": "V1",
+            "Name": "IE Std rate 21%"
+        },
+         {
+            "code": "V3",
+            "Name": "IE Std rate 21% EC"
+        },
+         {
+            "code": "I2",
+            "Name": "UK Std rate 0.00%"
+        }, 
+        {
+            "code": "I1",
+            "Name": "UK Std rate 20%"
+        },
+         {
+            "code": "E2",
+            "Name": "UK Std rate 20% EC"
+        },
+         {
+            "code": "E4",
+            "Name": "UK Std rate 20% EC Credit note"
+        },
+         {
+            "code": "V5",
+            "Name": "VAT Input 5%"
+        }
+    ]
+}

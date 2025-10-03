@@ -37,6 +37,9 @@ sap.ui.define([
             this.onResponseLoad(resdata)
         },
         onFind: async function () {
+            // this.getView().byId("txtquery").setVisible(false);
+            // this.getView().byId("qName").setVisible(false);
+
             var queryId = this.getView().byId("qid").getValue();
             let URL = AppConstant.URL.executeQuery.replace("id", queryId)
             var resdata = await BaseApi.postrequest(URL, "");

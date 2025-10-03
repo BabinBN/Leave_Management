@@ -1,0 +1,124 @@
+{
+    "ItemMaster": [
+        {
+            "Item No.": "0",
+            "Item Description": "Motorolla",
+            "In Stock": 152.0,
+            "Item Group": "MOBILE",
+            "Currency": "AED",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "1",
+            "Item Description": "Rental of Generator for Shore power requirement for 1 month period 23/07/23 thru 22/08/23",
+            "In Stock": 127.0,
+            "Item Group": "J.B. Printers",
+            "Currency": "AED",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "1/31941",
+            "Item Description": "Caterpillar,DP 50 KT,2008,Forklift",
+            "In Stock": 0.0,
+            "Item Group": "Items",
+            "Currency": "LBP",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "No"
+        },
+        {
+            "Item No.": "2",
+            "Item Description": "Dell Laptop Inspiron",
+            "In Stock": 35.0,
+            "Item Group": "Laptops",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "3",
+            "Item Description": "HP LaserJet Printer",
+            "In Stock": 12.0,
+            "Item Group": "Printers",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "4",
+            "Item Description": "CCTV Camera Model X200",
+            "In Stock": 78.0,
+            "Item Group": "Security",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "5",
+            "Item Description": "iPhone 14 Pro",
+            "In Stock": 50.0,
+            "Item Group": "MOBILE",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "6",
+            "Item Description": "Samsung Galaxy S23",
+            "In Stock": 64.0,
+            "Item Group": "MOBILE",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        },
+        {
+            "Item No.": "7",
+            "Item Description": "Forklift Electric 3T",
+            "In Stock": 0.0,
+            "Item Group": "Equipment",
+            "Currency": "LBP",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "No"
+        },
+        {
+            "Item No.": "8",
+            "Item Description": "Office Chair Ergonomic",
+            "In Stock": 150.0,
+            "Item Group": "Furniture",
+            "Currency": "USD",
+            "Additional Identifier": "",
+            "Sales Item": "Yes",
+            "Active": "Yes",
+            "PROJECT CODE": "",
+            "Inventory Item": "Yes"
+        }
+    ]
+}

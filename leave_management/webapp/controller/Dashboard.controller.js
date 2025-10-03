@@ -9,16 +9,16 @@ sap.ui.define([
 
         return Controller.extend("leavemanagement.controller.Dashboard", {
                 onInit: function () {
-                        this._openLoginDialog();
-                        this.signmdl();
+                       // this._openLoginDialog();
+                       // this.signmdl();
                         var oRouter = this.getOwnerComponent().getRouter();
                         oRouter.attachRouteMatched(this.onRouteMatched, this);
                 },
                 signmdl: function () {
                         this.getView().setModel(new JSONModel({
-                                        username: "",
-                                        email: "",
-                                        password: ""
+                                username: "",
+                                email: "",
+                                password: ""
                         }), "signUpModel")
                 },
                 onGoLeave: function () {
@@ -83,6 +83,10 @@ sap.ui.define([
                         this._openLoginDialog();
 
 
+                },
+                onPressPurchasing: function () {
+                        var oRoute = this.getOwnerComponent().getRouter();
+                        oRoute.navTo("Purchaseorder")
                 }
 
         })

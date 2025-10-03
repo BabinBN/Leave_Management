@@ -1,0 +1,45 @@
+<!-- UomvalueHelp.fragment.xml -->
+
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog title="List of Unit Measures" id="unitdailog" contentWidth="70%" contentHeight="60%">
+        <content>
+            <Table id="unitTable" mode="SingleSelectMaster" items="{uoMmdl>/UoMCode}">
+
+                <noData>
+                    <Text text="No Unit of Measures found."/>
+                </noData>
+
+                <columns>
+                    <Column>
+                        <Text text="Code" />
+                    </Column>
+                    <Column>
+                        <Text text="Unit Name" />
+                    </Column>
+                </columns>
+
+                <!-- Table Items -->
+                <items>
+                    <ColumnListItem vAlign="Middle" press=".onUnitItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{uoMmdl>Code}"/>
+                            <Text text="{uoMmdl>Name}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="Choose" type="Emphasized" press=".onUnitChoose" />
+                    <Button text="New" type="Emphasized" press=".onUnitDailogOk" />
+                    <Button text="Close" type="Ghost" press=".onUnitDialogClose" />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

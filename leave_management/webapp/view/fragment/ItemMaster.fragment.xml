@@ -1,0 +1,75 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog title="Item Master" id="itemdailog" contentWidth="70%" contentHeight="60%">
+        <content>
+            <Table id="ItmTable" mode="SingleSelectMaster" items="{Itemmdl>/ItemMaster}">
+
+                <noData>
+                    <Text text="No Item master records found."/>
+                </noData>
+
+                <columns>
+                    <Column>
+                        <Text text="Item Code" />
+                    </Column>
+                    <Column>
+                        <Text text="Item Name" />
+                    </Column>
+                    <Column>
+                        <Text text="In Stock" />
+                    </Column>
+                    <Column>
+                        <Text text="Item Group" />
+                    </Column>
+                    <Column>
+                        <Text text="Currency" />
+                    </Column>
+                     <Column>
+                        <Text text="Additional Identifier" />
+                    </Column>
+                     <Column>
+                        <Text text="Sales Item" />
+                    </Column>
+                     <Column>
+                        <Text text="Active" />
+                    </Column>
+                     <Column>
+                        <Text text="PROJECT CODE" />
+                    </Column>
+                     <Column>
+                        <Text text="Inventory Item" />
+                    </Column>
+                </columns>
+
+                <!-- Table Items -->
+                <items>
+                    <ColumnListItem vAlign="Middle" press=".onBPListItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{Itemmdl>Item No.}"/>
+                            <Text text="{Itemmdl>Item Description}" />
+                            <Text text="{Itemmdl>In Stock}" />
+                            <Text text="{Itemmdl>Item Group}" />
+                            <Text text="{Itemmdl>Currency}" />
+                            <Text text="{Itemmdl>Additional Identifier}" />
+                            <Text text="{Itemmdl>Sales Item}" />
+                            <Text text="{Itemmdl>Active}" />
+                            <Text text="{Itemmdl>PROJECT CODE}" />
+                            <Text text="{Itemmdl>Inventory Item}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="Choose" type="Emphasized" press=".onItemChoose" />
+                    <Button text="New" type="Emphasized" press=".onItemDialogOk" />
+                    <Button text="Close" type="Ghost" press=".onItemDialogClose" />
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

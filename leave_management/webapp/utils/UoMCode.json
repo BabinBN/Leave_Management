@@ -1,0 +1,20 @@
+{
+    "UoMCode":[
+        {
+            "Code":"Manual",
+            "Name":"Manual"
+        },
+         {
+            "Code":"Mobile",
+            "Name":"Mobile"
+        },
+         {
+            "Code":"Li",
+            "Name":"Liter"
+        },
+         {
+            "Code":"Kilo",
+            "Name":"Kilogram"
+        }
+    ]
+}

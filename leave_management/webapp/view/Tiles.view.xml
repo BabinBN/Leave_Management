@@ -1,0 +1,25 @@
+<!-- <mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+
+        <GenericTile class="sapUiTinyMargin" header="Purchasing" subheader="Cumulative Totals" press="onPressPurchasing">
+            <TileContent unit="Count" footer="Payables">
+                <NumericContent value="15" icon="sap-icon://purchase-order" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMargin" header="Business Partner" subheader="Cumulative Totals" press="onPressBusinessPartner">
+            <TileContent unit="Count" footer="Vendors / Customers">
+                <NumericContent value="5" icon="sap-icon://supplier" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+
+        <GenericTile class="sapUiTinyMargin" header="Inventory" subheader="Cumulative Totals" press="onPressInventory">
+            <TileContent unit="Count" footer="Stock &amp; Items">
+                <NumericContent value="89" icon="sap-icon://warehouse" withMargin="false" />
+            </TileContent>
+        </GenericTile>
+
+</mvc:View> -->

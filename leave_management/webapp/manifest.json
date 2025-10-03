@@ -55,7 +55,24 @@
        "leaveMdl": {
                 "type": "sap.ui.model.json.JSONModel",
                 "uri": "utils/leavetypes.json"
-            }
+            },
+        "Bpmdl":{
+            "type":"sap.ui.model.json.JSONModel",
+            "uri":"utils/Businesspartnermdl.json"
+        },
+        "Taxmdl":{
+          "type":"sap.ui.model.json.JSONModel",
+          "uri":"utils/TaxCode.json"
+        },
+         "uoMmdl":{
+          "type":"sap.ui.model.json.JSONModel",
+          "uri":"utils/UoMCode.json"
+        },
+        "Itemmdl":{
+          "type":"sap.ui.model.json.JSONModel",
+          "uri":"utils/ItemMastermdl.json"
+        }
+        
     },
    
     "resources": {
@@ -95,6 +112,16 @@
           "name":"Query",
           "pattern":"Q",
           "target":["query"]
+        },
+        {
+          "name":"Tiles",
+          "pattern":"t",
+          "target":["Tiles"]
+        },
+         {
+          "name":"Purchaseorder",
+          "pattern":"p",
+          "target":["Purchaseorder"]
         }
       ],
       "targets": {
@@ -102,13 +129,21 @@
           "id": "View1",
           "name": "LeaveRequest"
         },
-        "Dashboard":{
-          "id":"view2",
-          "name":"Dashboard"
-        },
         "query":{
           "id":"view3",
           "name":"Query"
+        },
+        "Dashboard":{
+         "id":"view2",
+          "name":"Dashboard"
+        },
+        "Tiles":{
+          "id":"view4",
+          "name":"Tiles"
+        },
+        "Purchaseorder":{
+          "id":"view5",
+          "name":"Purchaseorder"
         }
       }
     },

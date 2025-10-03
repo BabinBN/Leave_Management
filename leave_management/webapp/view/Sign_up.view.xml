@@ -1,6 +1,6 @@
 <!-- <mvc:View xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core" controllerName="eavemanagement.controller.sign_up">
+    xmlns:core="sap.ui.core" controllerName="leavemanagement.controller.sign_up">
 
     <FlexBox direction="Column" justifyContent="Center" alignItems="Center" height="auto" class="sapUiContentPadding" style="
     padding-top: 1rem;

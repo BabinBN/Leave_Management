@@ -47,12 +47,14 @@ public class CORSConfig {
                 .csrf(csrf -> csrf.disable())
             .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/Login/signin", "/Login/signup").permitAll()
+                        .requestMatchers("/Login/signin", "/Login/signup","/PO/add").permitAll()
                         .anyRequest().authenticated() // everything else secured
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+
+        
     }
 
 }
