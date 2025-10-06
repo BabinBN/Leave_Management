@@ -11,7 +11,8 @@ sap.ui.define([],function()
            // Leaverequestadd:"https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF",
             Leaverequestget:"",
             PostQuery:"http://localhost:8080/query/post",
-            executeQuery:"http://localhost:8080/query/Postquery/id"
+            executeQuery:"http://localhost:8080/query/Postquery/id",
+            PUrchaseOrder:"http://localhost:8080/PO/add"
         }
             
         

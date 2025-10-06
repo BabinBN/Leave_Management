@@ -12,22 +12,20 @@ sap.ui.define([
         onInit: function () {
             var oData = new JSONModel({
                 itemsmdl: [
-                    { ItemCode: "", ItemDescription: "", Quantity:"", Price:"", VatGroup: "V5", DiscountPercent: "", GrossPrice: "", UoMCode: "", Currency: "" }
+                    { ItemCode: "", ItemDescription: "", Quantity: "", Price: "", VatGroup: "V5", DiscountPercent: "", GrossPrice: "", UoMCode: "", Currency: "" }
                 ]
             });
-            this.getView().setModel(oData, "item");
+            this.getView().setModel(oData, "DocumentLines");
             this.PurchaseOrderMdl();
         },
 
         onAddRow: function () {
-            var oTable = this.byId("idProductsTable");
-            var oModel = oTable.getModel("item")
-            var aProducts = oModel.getProperty("/itemsmdl");
-
-            aProducts.push({
+            var oModel = this.getView().getModel("PurchaseOrderMdl");
+            var aLines = oModel.getProperty("/DocumentLines");
+            aLines.push({
                 ItemCode: "",
                 ItemDescription: "",
-                Quantity:"",
+                Quantity: "",
                 Price: "",
                 GrossPrice: "",
                 VatGroup: "V5",
@@ -35,23 +33,21 @@ sap.ui.define([
                 UoMCode: "",
                 Currency: ""
             });
-
-            oModel.setProperty("/itemsmdl", aProducts);
+            oModel.setProperty("/DocumentLines", aLines);
         },
 
         onDeleteRow: function () {
             var oTable = this.byId("idProductsTable");
-            var oModel = oTable.getModel("item");
-            var aProducts = oModel.getProperty("/itemsmdl");
+            var oModel = this.getView().getModel("PurchaseOrderMdl");
+            var aLines = oModel.getProperty("/DocumentLines");
 
             var aSelected = oTable.getSelectedItems();
             aSelected.forEach(function (oItem) {
-                var oCtx = oItem.getBindingContext("item");
-                var iIndex = oCtx.getPath().split("/").pop();
-                aProducts.splice(iIndex, 1);
+                var iIndex = parseInt(oItem.getBindingContext("PurchaseOrderMdl").getPath().split("/").pop(), 10);
+                aLines.splice(iIndex, 1);
             });
 
-            oModel.setProperty("/item", aProducts);
+            oModel.setProperty("/DocumentLines", aLines);
             oTable.removeSelections(true);
         },
         onValueHelpRequested: async function (oEvent) {
@@ -83,6 +79,7 @@ sap.ui.define([
             }
 
         },
+
         PurchaseOrderMdl: function () {
             this.getView().setModel(new JSONModel({
                 CardCode: "",
@@ -95,20 +92,32 @@ sap.ui.define([
                 DocDate: "",
                 DocDueDate: "",
                 Address: "",
-                BPL_IDAssignedToInvoice: "",
+                BPL_IDAssignedToInvoice: "1",
                 VATRegNum: "",
                 Department: "",
                 Email: "",
                 Branch: "",
                 DocCurrency: "",
                 DocumentStatus: "O",
-                DocumentLines: []
+                DocumentLines: [
+                    {
+                        ItemCode: "",
+                        ItemDescription: "",
+                        Quantity: "",
+                        Price: "",
+                        GrossPrice: "",
+                        VatGroup: "V5",
+                        DiscountPercent: "",
+                        UoMCode: "",
+                        Currency: ""
+                    }
+                ]
 
             }), "PurchaseOrderMdl")
         },
         onValueUnitRequest: async function (oEvent) {
             var sInputValue = oEvent.getSource().getValue();
-            this._currentContext = oEvent.getSource().getBindingContext("item");
+            this._currentContext = oEvent.getSource().getBindingContext("PurchaseOrderMdl");
             this._Unit = this._Unit || await Fragment.load({
                 id: this.getView().getId(),
                 name: "leavemanagement.view.fragment.UomvalueHelp",
@@ -123,16 +132,16 @@ sap.ui.define([
 
             if (oSelectedItem) {
                 var oUomData = oSelectedItem.getBindingContext("uoMmdl").getObject();
-                var oModel = this.getView().getModel("item");
-                var sPath = this._currentContext.getPath(); 
+                var oModel = this.getView().getModel("PurchaseOrderMdl");
+                var sPath = this._currentContext.getPath();
                 oModel.setProperty(sPath + "/UoMCode", oUomData.Name);
                 this._Unit.close();
             }
 
         },
-        onValueItemRequest:async function(oEvent) {
-             this._currentItemContext = oEvent.getSource().getBindingContext("item");
-             this._Item = this._Item || await Fragment.load({
+        onValueItemRequest: async function (oEvent) {
+            this._currentItemContext = oEvent.getSource().getBindingContext("PurchaseOrderMdl");
+            this._Item = this._Item || await Fragment.load({
                 id: this.getView().getId(),
                 name: "leavemanagement.view.fragment.ItemMaster",
                 controller: this
@@ -140,22 +149,41 @@ sap.ui.define([
             this.getView().addDependent(this._Item);
             this._Item.open();
         },
-        onItemChoose:function()
-        {
-             var oTable = this.byId("ItmTable");
+        onItemChoose: function () {
+            var oTable = this.byId("ItmTable");
             var oSelectedItem = oTable.getSelectedItem();
 
             if (oSelectedItem) {
                 var oItemData = oSelectedItem.getBindingContext("Itemmdl").getObject();
-                var oModel = this.getView().getModel("item");
-                var sPath = this._currentItemContext.getPath(); 
+                var oModel = this.getView().getModel("PurchaseOrderMdl");
+                var sPath = this._currentItemContext.getPath();
                 oModel.setProperty(sPath + "/ItemCode", oItemData["Item No."]);
                 oModel.setProperty(sPath + "/ItemDescription", oItemData["Item Description"]);
                 oModel.setProperty(sPath + "/Currency", oItemData["Currency"]);
-
-                
                 this._Item.close();
             }
+        },
+        onPressSave: async function () {
+            var oDataPO = this.getView().getModel("PurchaseOrderMdl").getData()
+            function formatDateToDDMMYYYY(isoDate) {
+                var d = new Date(isoDate);
+                var day = String(d.getDate()).padStart(2, '0');
+                var month = String(d.getMonth() + 1).padStart(2, '0');
+                var year = d.getFullYear();
+                return day + '.' + month + '.' + year;
+            }
+
+            oDataPO.DocDate = formatDateToDDMMYYYY(oDataPO.DocDate);
+            oDataPO.DocDueDate = formatDateToDDMMYYYY(oDataPO.DocDueDate);
+            var poResponse = await BaseApi.postrequest(AppConstant.URL.PUrchaseOrder, oDataPO)
+            // that.byId("footerError").setText(poResponse);
+            // that.byId("footerError").setVisible(true);
+            console.log("Purchase Order Response:", poResponse);
+            this.PurchaseOrderMdl();
+        },
+        onPressCancel: function () {
+            var oRoute = this.getOwnerComponent().getRouter();
+            oRoute.navTo("Dashboard")
         }
     }
     )

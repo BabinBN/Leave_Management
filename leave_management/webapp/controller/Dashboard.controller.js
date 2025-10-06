@@ -9,8 +9,8 @@ sap.ui.define([
 
         return Controller.extend("leavemanagement.controller.Dashboard", {
                 onInit: function () {
-                       // this._openLoginDialog();
-                       // this.signmdl();
+                       this._openLoginDialog();
+                       this.signmdl();
                         var oRouter = this.getOwnerComponent().getRouter();
                         oRouter.attachRouteMatched(this.onRouteMatched, this);
                 },

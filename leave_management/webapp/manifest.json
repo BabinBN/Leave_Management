@@ -71,6 +71,10 @@
         "Itemmdl":{
           "type":"sap.ui.model.json.JSONModel",
           "uri":"utils/ItemMastermdl.json"
+        },
+         "Branchmdl":{
+          "type":"sap.ui.model.json.JSONModel",
+          "uri":"utils/Branchmdl.json"
         }
         
     },

@@ -1,0 +1,24 @@
+{
+    "Branch": [
+        {
+            "Code": 1,
+            "Name": "DEMO -OEC Computers UK"
+        },
+        {
+            "Code": 2,
+            "Name": "Main"
+        },
+        {
+            "Code": 3,
+            "Name": "Batroun Branch"
+        },
+        {
+            "Code": 4,
+            "Name": "Lebanon Branch"
+        },
+        {
+            "Code": 5,
+            "Name": "UAE Branch"
+        }
+    ]
+}
