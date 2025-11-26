@@ -85,57 +85,56 @@ public class leaveReqService {
         }
     }
 
-   public JsonNode getB1UDO() {
-    if (sessionId == null) {
-        throw new IllegalStateException("Session not initialized. Call postB1Login first.");
+    public JsonNode getB1UDO() {
+        if (sessionId == null) {
+            throw new IllegalStateException("Session not initialized. Call postB1Login first.");
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            String urlString = "https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF";
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Cookie", "B1SESSION=" + sessionId);
+
+            InputStream inputStream = (conn.getResponseCode() < 400) ? conn.getInputStream() : conn.getErrorStream();
+
+            // Return the full JSON response
+            return mapper.readTree(inputStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    ObjectMapper mapper = new ObjectMapper();
+    public JsonNode getB1UDOById(String DocEntry) {
+        if (sessionId == null) {
+            throw new IllegalStateException("Session not initialized. Call postB1Login first.");
+        }
 
-    try {
-        String urlString = "https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF";
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Cookie", "B1SESSION=" + sessionId);
+        ObjectMapper mapper = new ObjectMapper();
 
-        InputStream inputStream = (conn.getResponseCode() < 400) ? conn.getInputStream() : conn.getErrorStream();
+        try {
+            String urlString = "https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF('" + DocEntry + "')";
+            URL url = new URL(urlString);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Cookie", "B1SESSION=" + sessionId);
 
-        // Return the full JSON response
-        return mapper.readTree(inputStream);
+            InputStream inputStream = (conn.getResponseCode() < 400) ? conn.getInputStream() : conn.getErrorStream();
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
+            // Return the full JSON response
+            return mapper.readTree(inputStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-}
-
-public JsonNode getB1UDOById(String DocEntry) {
-    if (sessionId == null) {
-        throw new IllegalStateException("Session not initialized. Call postB1Login first.");
-    }
-
-    ObjectMapper mapper = new ObjectMapper();
-
-    try {
-       String urlString = "https://htpc19835d03.cloudiax.com:50000/b1s/v2/ITFZILMF('"+DocEntry+"')";
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Cookie", "B1SESSION=" + sessionId);
-
-        InputStream inputStream = (conn.getResponseCode() < 400) ? conn.getInputStream() : conn.getErrorStream();
-
-        // Return the full JSON response
-        return mapper.readTree(inputStream);
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
-    }
-}
-
 
 }

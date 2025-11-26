@@ -126,6 +126,16 @@
           "name":"Purchaseorder",
           "pattern":"p",
           "target":["Purchaseorder"]
+        },
+        {
+          "name":"Businesspartner",
+          "pattern":"B",
+          "target":["Businesspartner"]
+        },
+        {
+          "name":"LeaveApproval",
+          "pattern":"LA",
+          "target":["LeaveAp"]
         }
       ],
       "targets": {
@@ -148,6 +158,14 @@
         "Purchaseorder":{
           "id":"view5",
           "name":"Purchaseorder"
+        },
+        "Businesspartner":{
+          "id":"view6",
+          "name":"Businesspartner"
+        },
+        "LeaveAp":{
+          "id":"view7",
+          "name":"LeaveApproval"
         }
       }
     },

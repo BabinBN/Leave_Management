@@ -87,6 +87,16 @@ sap.ui.define([
                 onPressPurchasing: function () {
                         var oRoute = this.getOwnerComponent().getRouter();
                         oRoute.navTo("Purchaseorder")
+                },
+                onPressBusinessPartner:function()
+                {
+                        var oRoute = this.getOwnerComponent().getRouter();
+                        oRoute.navTo("Businesspartner")
+                },
+                onGoApproval:function()
+                {
+                        var obpRoute=this.getOwnerComponent().getRouter();
+                        obpRoute.navTo("LeaveApproval")
                 }
 
         })

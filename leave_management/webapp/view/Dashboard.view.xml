@@ -12,6 +12,7 @@
 					<!-- <Image src="./resources/sap/ui/documentation/sdk/images/logo_sap.png" height="30px" /> -->
 					<Button id="btnLeave" text="Leave Request" level="H5" press=".onGoLeave" />
 					<Button id="btnQuery" text="Query Generator" level="H5" press=".onGoQuery" />
+					<Button id="btnApproval" text="Leave Approval" level="H5" press=".onGoApproval" />
 					<ToolbarSpacer />
 					<Button icon="sap-icon://search"/>
 					<Button icon="sap-icon://bell"/>
@@ -58,4 +59,5 @@
 			</content>
 		</Page>
 	</App>
+	
 </mvc:View>

@@ -1,0 +1,94 @@
+<mvc:View controllerName="leavemanagement.controller.LeaveApproval"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table">
+
+    <VBox class="sapUiSmallMargin">
+        <Title text="Leave Approval Dashboard" level="H2" />
+        <HBox class="sapUiSmallMarginBottom" justifyContent="SpaceAround">
+            <Select id="employeeFilter" width="200px" change="onFilterChange">
+                <core:Item key="" text="All Employees"/>
+            </Select>
+            <DatePicker id="fromDateFilter" placeholder="From Date" change="onFilterChange"/>
+            <DatePicker id="toDateFilter" placeholder="To Date" change="onFilterChange"/>
+            <Select id="leaveTypeFilter" width="150px" change="onFilterChange">
+                <core:Item key="" text="All Types"/>
+                <core:Item key="Sick" text="Sick"/>
+                <core:Item key="Casual" text="Casual"/>
+                <core:Item key="Annual" text="Annual"/>
+            </Select>
+            <Select id="statusFilter" width="150px" change="onFilterChange">
+                <core:Item key="" text="All Status"/>
+                <core:Item key="Pending" text="Pending"/>
+                <core:Item key="Approved" text="Approved"/>
+                <core:Item key="Rejected" text="Rejected"/>
+            </Select>
+        </HBox>
+        <table:Table id="leaveTable" rows="{/LeaveRequests}" visibleRowCount="10" selectionMode="None" class="sapUiResponsiveMargin">
+
+            <table:columns>
+                <table:Column>
+                    <Label text="Employee Name"/>
+                    <table:template>
+                        <Text text="{EmployeeName}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="Leave Type"/>
+                    <table:template>
+                        <Text text="{LeaveType}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="From Date"/>
+                    <table:template>
+                        <Text text="{FromDate}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="To Date"/>
+                    <table:template>
+                        <Text text="{ToDate}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="Reason"/>
+                    <table:template>
+                        <Text text="{Reason}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="Status"/>
+                    <table:template>
+                        <Text text="{Status}"/>
+                    </table:template>
+                </table:Column>
+
+                <table:Column>
+                    <Label text="Action"/>
+                    <table:template>
+                        <HBox>
+                            <Button text="Approve" type="Emphasized" press="onApprove"/>
+                            <Button text="Reject" type="Reject" press="onReject"/>
+                        </HBox>
+                    </table:template>
+                </table:Column>
+            </table:columns>
+        </table:Table>
+       <HBox justifyContent="End" class="sapUiMediumMarginEnd">
+       <Button type="Emphasized" text="Save" width="70px" press="onPressSave" class="sapUiTinyMarginEnd"/>
+        <Button type="Ghost" text="Cancel" width="70px" press="onPressCancel"/>
+        </HBox>
+    </VBox>
+     
+
+                
+  
+
+</mvc:View>

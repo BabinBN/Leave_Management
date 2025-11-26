@@ -1,0 +1,210 @@
+<mvc:View height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:forms="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns="sap.m" controllerName="leavemanagement.controller.Businesspartner">
+    <uxap:ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" showFooter="true">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader objectTitle="Purchase Order" objectSubtitle="" showNavButton="true" navButtonPress=".onNavBack"/>
+        </uxap:headerTitle>
+        <uxap:sections>
+            <uxap:ObjectPageSection titleUppercase="false" title="">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Header Level" titleUppercase="false">
+                        <uxap:blocks>
+                            <forms:SimpleForm title="" editable="false" layout="ColumnLayout">
+
+                                <Label text="Card Code"/>
+                                <MultiInput value="{PurchaseOrderMdl>/CardCode}" id="cardcode" valueHelpRequest="onValueHelpRequested"/>
+                                <Label text="Card Name"/>
+                                <Input value="{PurchaseOrderMdl>/CardName}" id="cardName"/>
+                                <Label text=""/>
+                                <ComboBox selectedKey="{}">
+                                    <items>
+                                        <core:Item key="Y" text="BP Currency"/>
+                                        <core:Item key="N" text="Local Currency"/>
+                                        <core:Item key="N" text="System Currency"/>
+                                    </items>
+                                </ComboBox>
+
+                                <Input value="{PurchaseOrderMdl>/DocCurrency}"/>
+                                <Label text="Address"/>
+                                <Input value="{PurchaseOrderMdl>/Address}"/>
+
+
+                                <Label text="Num At Card"/>
+                                <Input value="{PurchaseOrderMdl>/NumAtCard}"/>
+
+                                <Label text="Email"/>
+                                <Input value="{PurchaseOrderMdl>/Email}"/>
+
+
+                                <Label text="Department"/>
+                                <ComboBox selectedKey="{PurchaseOrderMdl>/Department}">
+                                    <items>
+                                        <core:Item key="Sales" text="Sales"/>
+                                        <core:Item key="Purchasing" text="Purchasing"/>
+                                        <core:Item key="Finance" text="Finance"/>
+                                    </items>
+                                </ComboBox>
+                                <Label text="Document Type"/>
+                                <ComboBox selectedKey="{PurchaseOrderMdl>/DocType}">
+                                    <items>
+                                        <core:Item key="Item" text="Item"/>
+                                        <core:Item key="Service" text="Service"/>
+                                    </items>
+                                </ComboBox>
+
+                                <Label text="Document Number"/>
+                                <Input value="{PurchaseOrderMdl>/DocNum}" editable="false"/>
+
+
+
+
+                                <Label text="Document Status"/>
+                                <ComboBox selectedKey="{PurchaseOrderMdl>/DocumentStatus}">
+                                    <items>
+                                        <core:Item key="O" text="Open"/>
+                                        <core:Item key="C" text="Closed"/>
+                                    </items>
+                                </ComboBox>
+
+                                <Label text="Canceled"/>
+                                <ComboBox selectedKey="{PurchaseOrderMdl>/Cancelled}">
+                                    <items>
+                                        <core:Item key="Y" text="Yes"/>
+                                        <core:Item key="N" text="No"/>
+                                    </items>
+                                </ComboBox>
+
+                                <Label text="Document Date"/>
+                                <DatePicker value="{ path: 'PurchaseOrderMdl>/DocDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd" />
+
+                                <Label text="Document Due Date"/>
+                                <DatePicker value="{ path: 'PurchaseOrderMdl>/DocDueDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' } }" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd" />
+
+
+                                <Label text="Branch"/>
+                                <ComboBox selectedKey="{PurchaseOrderMdl>/BPL_IDAssignedToInvoice}" items="{Branchmdl>/Branch}">
+                                    <core:Item key="{Branchmdl>Code}" text="{Branchmdl>Name}"/>
+                                </ComboBox>
+
+                                <!-- <Label text="Branch Name"/>
+                                <Input value="{PurchaseOrderMdl>/BPL_IDAssignedToInvoice}"/> -->
+
+                            </forms:SimpleForm>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                    <!-- <uxap:ObjectPageSubSection title="Second Sample Form" titleUppercase="false">
+						<uxap:blocks> <forms:SimpleForm title="Location" editable="false" layout="ColumnLayout">
+
+								<Label text="Country"/>
+								<Text text="France"/>
+
+								<Label text="Subsidiary"/>
+								<Text text="SAP France"/>
+
+								<Label text="Building"/>
+								<Text text="LVL B"/>
+
+								<Label text="Room"/>
+								<Text text="AppHaus"/>
+
+							</forms:SimpleForm>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection> -->
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false" showTitle="false">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Line Level" titleUppercase="false">
+                        <Table id="idProductsTable" items="{PurchaseOrderMdl>/DocumentLines}" mode="MultiSelect">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Items" level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Add Row" press=".onAddRow"/>
+                                    <Button text="Delete  Row" press=".onDeleteRow"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+
+                            <columns>
+                                <Column>
+                                    <Text text="Item Code"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Item Name"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Quantity"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Unit Price"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Gross Price"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Tax Code"/>
+
+                                </Column>
+                                <Column>
+                                    <Text text="Discount %"/>
+                                </Column>
+                                <Column>
+                                    <Text text="UoM Code"/>
+                                </Column>
+                                <Column>
+                                    <Text text="Currency"/>
+                                </Column>
+                            </columns>
+
+                            <items>
+                                <ColumnListItem type="Active" selected="True">
+                                    <cells>
+                                        <!-- <Input value="{ItemCode}" placeholder="Enter Item Code"/> -->
+                                        <MultiInput value="{PurchaseOrderMdl>ItemCode}" id="Itmcode" valueHelpRequest="onValueItemRequest" placeholder="Enter Item Code"/>
+                                        <Input value="{PurchaseOrderMdl>ItemDescription}" placeholder="Enter Item Name"/>
+                                        <Input value="{PurchaseOrderMdl>Quantity}" placeholder="Enter Quantity"/>
+                                        <Input value="{PurchaseOrderMdl>Price}" placeholder="Enter UnitPrice"/>
+                                        <Input value="{PurchaseOrderMdl>GrossPrice}" placeholder="Enter GrossPrice"/>
+                                        <!-- <Input value="{VatGroup}" placeholder="Enter TaxCode"/> -->
+                                        <!-- <ComboBox selectedKey="{item>/Taxmdl}">
+                                            <items>
+                                                <core:Item key="{Taxmdl>/code}" text="{Taxmdl>/Name}"/>
+                                            </items>
+                                        </ComboBox> -->
+                                        <ComboBox selectedKey="{PurchaseOrderMdl>VatGroup}" items="{Taxmdl>/TaxCode}">
+                                            <core:Item key="{Taxmdl>code}" text="{Taxmdl>Name}"/>
+                                        </ComboBox>
+                                        <Input value="{PurchaseOrderMdl>DiscountPercent}" placeholder="Enter DisCount"/>
+
+                                        <MultiInput value="{PurchaseOrderMdl>UoMCode}" id="uomcode" valueHelpRequest="onValueUnitRequest" placeholder="Enter UoMCode"/>
+
+                                        <Input value="{PurchaseOrderMdl>Currency}" placeholder="Enter Currency"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+
+                        </Table>
+
+                    </uxap:ObjectPageSubSection >
+
+                </uxap:subSections>
+
+            </uxap:ObjectPageSection>
+
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <MessageStrip id="footerError" text="" type="Error" showIcon="true" showCloseButton="true" visible="false" />
+                <Button type="Emphasized" text="Save" width="70px" press="onPressSave"/>
+                <Button type="Ghost" text="Cancel" width="70px" press="onPressCancel"/>
+            </OverflowToolbar>
+        </uxap:footer>
+
+    </uxap:ObjectPageLayout>
+
+</mvc:View>

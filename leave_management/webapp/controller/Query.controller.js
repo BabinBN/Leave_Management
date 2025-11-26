@@ -115,6 +115,7 @@ sap.ui.define([
         },
         onNavBack:function()
         {
+            
             var oRoute= this.getOwnerComponent().getRouter();
             oRoute.navTo("Dashboard")
         }
